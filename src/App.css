@@ -81,6 +81,14 @@
     font-size: 27px;
     font-weight: 600;
   }
+  .Box2 {
+    /* background-color: #F0EEED; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 50%;
+  }
   .Box2 input {
     width: 63%;
     height: 55%;
@@ -104,6 +112,7 @@
   }
 
   .Box3 {
+    margin-top: 10px;
     width: 24rem;
     height: 60rem;
   }
@@ -130,6 +139,16 @@
     font-size: 36px;
     font-weight: 600;
   }
+
+  .Box2 {
+    /* background-color: #F0EEED; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 20%;
+  }
+
   .Box2 input {
     width: 63%;
     height: 55%;
@@ -184,6 +203,15 @@
     font-size: 38px;
     font-weight: 600;
   }
+  .Box2 {
+    /* background-color: #F0EEED; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 20%;
+  }
+
   .Box2 input {
     width: 63%;
     height: 55%;

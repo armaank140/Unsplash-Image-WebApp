@@ -55,15 +55,11 @@ export default function App() {
             {image.map((value, index) => {
               return (
                 <div key={index} className="col-4 my-2">
-                  <div
-                    className="card"
-                    
-                  >
+                  <div className="card">
                     <img
                       src={value.urls.small}
                       className="card-img-top"
                       alt="Images"
-                      
                     />
                     <div className="card-body">
                       <p className="card-text">
