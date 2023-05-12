@@ -2,27 +2,31 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const api_url =
-    "https://api.unsplash.com/search/photos?page=1&query=random&client_id=m9k-Or2jliKNXJzTx_eyTS_-mTFfbrwdo1tZtJKNi5I";
-
+ 
   const [image, setImage] = useState([]);
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState("code"); 
+
+  const api_url = `https://api.unsplash.com/search/photos?page=1&query=${inputText}&client_id=m9k-Or2jliKNXJzTx_eyTS_-mTFfbrwdo1tZtJKNi5I`;
+
 
   const inputEvent = (e) => {
-    // console.log(e.target.value)
     setInputText(e.target.value);
+    //  console.log(inputText);
+    // console.log(e.target.value);
   };
 
-  const getData = () => {
+  const getData = async() => {
     console.log(inputText);
-
-    const url = `https://api.unsplash.com/search/photos?page=1&query=${inputText}&client_id=m9k-Or2jliKNXJzTx_eyTS_-mTFfbrwdo1tZtJKNi5I`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((actualData) => {
-        setImage(actualData.results);
-      });
+    if (inputText == 0) {
+      alert("Enter Keyword to Search Photos");
+    } else {  
+      await fetch(api_url)
+        .then((response) => response.json())
+        .then((actualData) => {
+          setImage(actualData.results);
+        });
+    }
+    setInputText("");
   };
 
   useEffect(() => {
@@ -31,6 +35,8 @@ export default function App() {
       .then((actualData) => {
         setImage(actualData.results);
       });
+      setInputText("");
+
   }, []);
 
   return (
