@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
- 
   const [image, setImage] = useState([]);
-  const [inputText, setInputText] = useState("code"); 
+  const [inputText, setInputText] = useState("code");
+  const [Error, setError] = useState("");
 
   const api_url = `https://api.unsplash.com/search/photos?page=1&query=${inputText}&client_id=m9k-Or2jliKNXJzTx_eyTS_-mTFfbrwdo1tZtJKNi5I`;
-
 
   const inputEvent = (e) => {
     setInputText(e.target.value);
@@ -15,16 +14,17 @@ export default function App() {
     // console.log(e.target.value);
   };
 
-  const getData = async() => {
+  const getData = async () => {
     console.log(inputText);
     if (inputText == 0) {
-      alert("Enter Keyword to Search Photos");
-    } else {  
+      setError("Enter Search Keyword");
+    } else {
       await fetch(api_url)
         .then((response) => response.json())
         .then((actualData) => {
           setImage(actualData.results);
         });
+      setError("");
     }
     setInputText("");
   };
@@ -35,9 +35,9 @@ export default function App() {
       .then((actualData) => {
         setImage(actualData.results);
       });
-      setInputText("");
-
+    setInputText("");
   }, []);
+
 
   return (
     <>
@@ -54,6 +54,9 @@ export default function App() {
           <button className="btn btn-primary" onClick={getData}>
             Search
           </button>
+        </div>
+        <div className="ErrorBox">
+          <div className="error">{Error}</div>
         </div>
 
         <div className="Box3">
